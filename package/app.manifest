@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "2.0.0",
+  "info": {
+    "id": {
+      "group": null,
+      "name": "TA-flux",
+      "version": "0.1.0"
+    },
+    "author": [
+      { "name": "Mikael Bjerkeland", "email": "mikael@bjerkeland.com", "company": null }
+    ],
+    "releaseDate": null,
+    "description": "Asset role classifier using firewall traffic ports and Splunk MLTK.",
+    "classification": {
+      "intendedAudience": "Anyone",
+      "categories": ["Security, Fraud & Compliance"],
+      "developmentStatus": "Beta"
+    },
+    "commonInformationModels": null,
+    "license": null,
+    "privacyPolicy": null,
+    "releaseNotes": null
+  },
+  "dependencies": {
+    "Splunk_ML_Toolkit": {
+      "version": "5.4.0",
+      "package": "Splunk_ML_Toolkit"
+    }
+  },
+  "tasks": [],
+  "inputGroups": null,
+  "incompatibleApps": null,
+  "platformRequirements": {
+    "splunk": {
+      "Enterprise": "9.0.0"
+    }
+  },
+  "supportedDeployments": ["_standalone", "_search_head_clustering"],
+  "targetWorkloads": ["_search_heads"]
+}
