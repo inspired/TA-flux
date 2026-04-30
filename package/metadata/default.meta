@@ -1,0 +1,21 @@
+[]
+access = read : [ * ], write : [ admin, power ]
+export = system
+
+[macros]
+export = system
+
+[transforms]
+export = system
+
+[collections]
+export = system
+
+[savedsearches]
+export = none
+
+[views]
+export = system
+
+[nav]
+export = system
