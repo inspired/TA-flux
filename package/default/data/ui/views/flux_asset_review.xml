@@ -1,0 +1,188 @@
+<form version="1.1" theme="light">
+  <label>TA-flux — Asset Role Review</label>
+  <description>
+    Review and confirm predicted asset roles. Click a row to load it into the
+    review panel below.
+  </description>
+
+  <fieldset submitButton="false" autoRun="true">
+    <input type="dropdown" token="tok_role" searchWhenChanged="true">
+      <label>Filter by predicted role</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>predicted_role</fieldForLabel>
+      <fieldForValue>predicted_role</fieldForValue>
+      <search>
+        <query>| inputlookup flux_pending_review_lookup | stats count by predicted_role</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="text" token="tok_min_conf" searchWhenChanged="true">
+      <label>Minimum confidence</label>
+      <default>0.0</default>
+      <initialValue>0.0</initialValue>
+    </input>
+    <input type="text" token="tok_search" searchWhenChanged="true">
+      <label>Filter by dest substring</label>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+  </fieldset>
+
+  <row>
+    <panel>
+      <single>
+        <title>Pending</title>
+        <search>
+          <query>| inputlookup flux_pending_review_lookup | stats count</query>
+          <refresh>30s</refresh>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="rangeColors">["0x55AA55","0xDD6644"]</option>
+        <option name="rangeValues">[0]</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Confirmed</title>
+        <search>
+          <query>| inputlookup flux_classifications_lookup | stats count</query>
+          <refresh>30s</refresh>
+        </search>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Last prediction run</title>
+        <search>
+          <query>| inputlookup flux_pending_review_lookup | stats max(predicted_at) as last | eval last=strftime(last, "%Y-%m-%d %H:%M")</query>
+          <refresh>30s</refresh>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <row>
+    <panel>
+      <title>Pending predictions</title>
+      <table>
+        <search>
+          <query>
+            | inputlookup flux_pending_review_lookup
+            | where predicted_probability >= tonumber("$tok_min_conf$")
+            | search predicted_role="$tok_role$" dest="$tok_search$"
+            | sort - predicted_probability
+            | table dest predicted_role predicted_probability top3_roles observed_ports predicted_at
+            | eval predicted_at = strftime(predicted_at, "%Y-%m-%d %H:%M")
+          </query>
+          <refresh>30s</refresh>
+        </search>
+        <option name="drilldown">row</option>
+        <option name="count">25</option>
+        <drilldown>
+          <set token="tok_selected_dest">$row.dest$</set>
+          <set token="tok_selected_role">$row.predicted_role$</set>
+          <set token="tok_selected_prob">$row.predicted_probability$</set>
+          <set token="tok_selected_top3">$row.top3_roles$</set>
+          <set token="tok_selected_ports">$row.observed_ports$</set>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+
+  <row depends="$tok_selected_dest$">
+    <panel>
+      <title>Review: $tok_selected_dest$</title>
+      <html>
+        <h3>$tok_selected_dest$</h3>
+        <p>
+          <strong>Predicted:</strong> $tok_selected_role$
+          (confidence $tok_selected_prob$)
+        </p>
+        <p>
+          <strong>Class probabilities (all):</strong>
+          <code>$tok_selected_top3$</code>
+        </p>
+        <p>
+          <strong>Observed ports:</strong>
+          <code>$tok_selected_ports$</code>
+        </p>
+      </html>
+    </panel>
+  </row>
+
+  <row depends="$tok_selected_dest$">
+    <panel>
+      <title>Confirm or reject</title>
+      <input type="dropdown" token="tok_role_override">
+        <label>Confirm as role</label>
+        <fieldForLabel>asset_role</fieldForLabel>
+        <fieldForValue>asset_role</fieldForValue>
+        <search>
+          <query>| inputlookup flux_classifications_lookup | stats count by asset_role | sort asset_role</query>
+        </search>
+        <default>$tok_selected_role$</default>
+      </input>
+      <input type="text" token="tok_notes_raw">
+        <label>Notes (optional)</label>
+        <default></default>
+        <change>
+          <eval token="tok_notes_safe">replace('tok_notes_raw', "[^a-zA-Z0-9 .,_:\-]", "")</eval>
+        </change>
+      </input>
+      <input type="link" token="tok_confirm_action">
+        <label>Action</label>
+        <choice value="confirm">Confirm</choice>
+        <choice value="reject">Reject</choice>
+        <change>
+          <condition value="confirm">
+            <set token="tok_run_confirm">1</set>
+            <unset token="tok_run_reject"/>
+          </condition>
+          <condition value="reject">
+            <set token="tok_run_reject">1</set>
+            <unset token="tok_run_confirm"/>
+          </condition>
+        </change>
+      </input>
+    </panel>
+  </row>
+
+  <row depends="$tok_run_confirm$">
+    <panel>
+      <title>Confirming…</title>
+      <table>
+        <search>
+          <query>
+            | savedsearch flux_confirm_prediction
+                dest="$tok_selected_dest$"
+                role="$tok_role_override$"
+                user="$env:user$"
+                notes="$tok_notes_safe$"
+          </query>
+          <done>
+            <unset token="tok_selected_dest"/>
+            <unset token="tok_run_confirm"/>
+          </done>
+        </search>
+      </table>
+    </panel>
+  </row>
+
+  <row depends="$tok_run_reject$">
+    <panel>
+      <title>Rejecting…</title>
+      <table>
+        <search>
+          <query>
+            | savedsearch flux_reject_prediction dest="$tok_selected_dest$"
+          </query>
+          <done>
+            <unset token="tok_selected_dest"/>
+            <unset token="tok_run_reject"/>
+          </done>
+        </search>
+      </table>
+    </panel>
+  </row>
+</form>
