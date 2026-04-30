@@ -8,6 +8,9 @@ export = system
 [transforms]
 export = system
 
+[lookups]
+export = system
+
 [collections]
 export = system
 
