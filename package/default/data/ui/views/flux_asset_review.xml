@@ -24,8 +24,8 @@
     </input>
     <input type="text" token="tok_search" searchWhenChanged="true">
       <label>Filter by dest substring</label>
-      <default>*</default>
-      <initialValue>*</initialValue>
+      <default></default>
+      <initialValue></initialValue>
     </input>
   </fieldset>
 
@@ -69,8 +69,8 @@
         <search>
           <query>
             | inputlookup flux_pending_review_lookup
-            | where predicted_probability >= tonumber("$tok_min_conf$")
-            | search predicted_role="$tok_role$" dest="$tok_search$"
+            | where predicted_probability >= coalesce(tonumber("$tok_min_conf$"), 0)
+            | search predicted_role="$tok_role$" dest="*$tok_search$*"
             | sort - predicted_probability
             | table dest predicted_role predicted_probability top3_roles observed_ports predicted_at
             | eval predicted_at = strftime(predicted_at, "%Y-%m-%d %H:%M")
@@ -85,6 +85,7 @@
           <set token="tok_selected_prob">$row.predicted_probability$</set>
           <set token="tok_selected_top3">$row.top3_roles$</set>
           <set token="tok_selected_ports">$row.observed_ports$</set>
+          <eval token="tok_selected_dest_safe">replace($row.dest$, "[^a-zA-Z0-9.:_\-]", "")</eval>
         </drilldown>
       </table>
     </panel>
@@ -122,6 +123,9 @@
           <query>| inputlookup flux_classifications_lookup | stats count by asset_role | sort asset_role</query>
         </search>
         <default>$tok_selected_role$</default>
+        <change>
+          <eval token="tok_role_override_safe">replace('tok_role_override', "[^a-zA-Z0-9_\-]", "")</eval>
+        </change>
       </input>
       <input type="text" token="tok_notes_raw">
         <label>Notes (optional)</label>
@@ -155,8 +159,8 @@
         <search>
           <query>
             | savedsearch flux_confirm_prediction
-                dest="$tok_selected_dest$"
-                role="$tok_role_override$"
+                dest="$tok_selected_dest_safe$"
+                role="$tok_role_override_safe$"
                 user="$env:user$"
                 notes="$tok_notes_safe$"
           </query>
@@ -175,7 +179,7 @@
       <table>
         <search>
           <query>
-            | savedsearch flux_reject_prediction dest="$tok_selected_dest$"
+            | savedsearch flux_reject_prediction dest="$tok_selected_dest_safe$"
           </query>
           <done>
             <unset token="tok_selected_dest"/>
