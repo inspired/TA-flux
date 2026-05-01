@@ -17,7 +17,7 @@
       "developmentStatus": "Beta"
     },
     "commonInformationModels": null,
-    "license": null,
+    "license": "Apache-2.0",
     "privacyPolicy": null,
     "releaseNotes": null
   },
