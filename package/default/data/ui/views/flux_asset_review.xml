@@ -6,7 +6,7 @@
   </description>
 
   <fieldset submitButton="false" autoRun="true">
-    <input type="dropdown" token="tok_role" searchWhenChanged="true">
+    <input type="dropdown" token="tok_role_raw" searchWhenChanged="true">
       <label>Filter by predicted role</label>
       <choice value="*">All</choice>
       <fieldForLabel>predicted_role</fieldForLabel>
@@ -16,16 +16,25 @@
       </search>
       <default>*</default>
       <initialValue>*</initialValue>
+      <change>
+        <eval token="tok_role">if('tok_role_raw'=="*", "*", replace('tok_role_raw', "[^a-zA-Z0-9_\-]", ""))</eval>
+      </change>
     </input>
-    <input type="text" token="tok_min_conf" searchWhenChanged="true">
+    <input type="text" token="tok_min_conf_raw" searchWhenChanged="true">
       <label>Minimum confidence</label>
       <default>0.0</default>
       <initialValue>0.0</initialValue>
+      <change>
+        <eval token="tok_min_conf">if(isnum(tonumber('tok_min_conf_raw')), tonumber('tok_min_conf_raw'), 0)</eval>
+      </change>
     </input>
-    <input type="text" token="tok_search" searchWhenChanged="true">
+    <input type="text" token="tok_search_raw" searchWhenChanged="true">
       <label>Filter by dest substring</label>
       <default></default>
       <initialValue></initialValue>
+      <change>
+        <eval token="tok_search">replace('tok_search_raw', "[^a-zA-Z0-9.\-_:]", "")</eval>
+      </change>
     </input>
   </fieldset>
 
