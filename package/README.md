@@ -9,7 +9,7 @@ over time as you confirm or override predictions.
 
 1. Builds a binary `port_*` feature matrix per destination from the
    `Network_Traffic` data model.
-2. Trains a RandomForestClassifier (MLTK) once per week from confirmed labels.
+2. Trains a LogisticRegression model (MLTK) once per week from confirmed labels.
 3. Predicts asset roles for unconfirmed hosts every night, writes them to a
    review queue.
 4. Provides a dashboard for human reviewers to confirm, override, or reject
