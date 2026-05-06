@@ -1,0 +1,308 @@
+package_pattern,category,vendor,role,description
+nginx,web_server,NGINX Inc,web,Nginx web server
+nginx-common,web_server,NGINX Inc,web,Nginx common files
+nginx-extras,web_server,NGINX Inc,web,Nginx extras module
+apache2,web_server,Apache,web,Apache HTTP Server
+httpd,web_server,Apache,web,Apache HTTP Server (RHEL)
+lighttpd,web_server,Lighttpd,web,Lighttpd web server
+caddy,web_server,Caddy,web,Caddy web server
+haproxy,web_server,HAProxy,load_balancer,HAProxy load balancer
+traefik,web_server,Traefik Labs,load_balancer,Traefik reverse proxy
+varnish,web_server,Varnish,cache,Varnish HTTP accelerator
+openresty,web_server,OpenResty,web,OpenResty Nginx+Lua web platform
+mysql-server,database,Oracle,database,MySQL server
+mysql-server-*,database,Oracle,database,MySQL server (versioned)
+mariadb-server,database,MariaDB,database,MariaDB server
+mariadb-server-*,database,MariaDB,database,MariaDB server (versioned)
+postgresql,database,PostgreSQL,database,PostgreSQL database
+postgresql-*,database,PostgreSQL,database,PostgreSQL (versioned)
+mongodb-org,database,MongoDB,database,MongoDB database
+mongodb-org-server,database,MongoDB,database,MongoDB server
+redis-server,database,Redis,cache,Redis server
+memcached,database,Memcached,cache,Memcached cache
+elasticsearch,search,Elastic,search,Elasticsearch
+opensearch,search,OpenSearch,search,OpenSearch
+clickhouse-server,database,ClickHouse,database,ClickHouse analytics database
+clickhouse-common-static,database,ClickHouse,database,ClickHouse common files
+cassandra,database,Apache,database,Apache Cassandra
+couchdb,database,Apache,database,Apache CouchDB
+influxdb,database,InfluxData,database,InfluxDB time series database
+influxdb2,database,InfluxData,database,InfluxDB 2.x time series database
+neo4j,database,Neo4j,database,Neo4j graph database
+cockroach,database,Cockroach Labs,database,CockroachDB distributed SQL
+couchbase-server,database,Couchbase,database,Couchbase NoSQL database
+scylladb,database,ScyllaDB,database,ScyllaDB Cassandra-compatible
+mssql-server,database,Microsoft,database,Microsoft SQL Server for Linux
+oracle-xe,database,Oracle,database,Oracle Express Edition
+oracle-database-*,database,Oracle,database,Oracle Database (versioned)
+victoriametrics,database,VictoriaMetrics,database,VictoriaMetrics time series database
+rethinkdb,database,RethinkDB,database,RethinkDB real-time database
+docker-ce,container,Docker,container,Docker CE runtime
+docker.io,container,Docker,container,Docker runtime (Debian)
+docker-ce-cli,container,Docker,container,Docker CE CLI
+containerd,container,CNCF,container,containerd runtime
+containerd.io,container,Docker,container,containerd runtime (Docker repo)
+podman,container,Red Hat,container,Podman container runtime
+buildah,container,Red Hat,container,Buildah container builder
+skopeo,container,Red Hat,container,Skopeo container image tool
+kubeadm,container,CNCF,kubernetes,Kubernetes admin tool
+kubectl,container,CNCF,kubernetes,Kubernetes CLI
+kubelet,container,CNCF,kubernetes,Kubernetes node agent
+k3s,container,Rancher,kubernetes,K3s lightweight Kubernetes
+helm,container,CNCF,kubernetes,Helm Kubernetes package manager
+openssh-server,remote_access,OpenSSH,infrastructure,SSH server
+openssh-client,remote_access,OpenSSH,infrastructure,SSH client
+vsftpd,remote_access,vsftpd,file_server,vsftpd FTP server
+proftpd,remote_access,ProFTPD,file_server,ProFTPD FTP server
+pure-ftpd,remote_access,Pure-FTPd,file_server,Pure-FTPd FTP server
+xrdp,remote_access,xrdp,infrastructure,xRDP remote desktop
+tigervnc-server,remote_access,TigerVNC,infrastructure,TigerVNC server
+falcon-sensor,security,CrowdStrike,security,CrowdStrike Falcon sensor
+mdatp,security,Microsoft,security,Microsoft Defender for Endpoint
+cbagent,security,Carbon Black,security,Carbon Black agent
+sentinelone,security,SentinelOne,security,SentinelOne agent
+sophos-av,security,Sophos,security,Sophos Antivirus
+clamav,security,ClamAV,security,ClamAV antivirus
+clamav-daemon,security,ClamAV,security,ClamAV daemon
+wazuh-agent,security,Wazuh,security,Wazuh agent
+wazuh-manager,security,Wazuh,security,Wazuh manager
+ossec-hids,security,OSSEC,security,OSSEC HIDS
+fail2ban,security,Fail2ban,security,Fail2ban IPS
+suricata,security,Suricata,security,Suricata IDS/IPS
+snort,security,Snort,security,Snort IDS
+auditd,security,Linux,security,Linux audit daemon
+audit,security,Linux,security,Linux audit daemon (RHEL)
+tripwire,security,Tripwire,security,Tripwire integrity checker
+aide,security,AIDE,security,AIDE integrity checker
+rkhunter,security,Rootkit Hunter,security,Rootkit Hunter
+vault,security,HashiCorp,security,HashiCorp Vault
+openscap,security,NIST,security,OpenSCAP compliance
+openscap-scanner,security,NIST,security,OpenSCAP scanner
+lynis,security,CISOfy,security,Lynis security auditing
+qualys-cloud-agent,security,Qualys,security,Qualys cloud agent
+nessus,security,Tenable,security,Nessus vulnerability scanner
+postfix,mail,Postfix,mail,Postfix MTA
+sendmail,mail,Sendmail,mail,Sendmail MTA
+exim4,mail,Exim,mail,Exim MTA
+exim4-daemon-heavy,mail,Exim,mail,Exim MTA (full)
+dovecot-core,mail,Dovecot,mail,Dovecot IMAP/POP3
+dovecot-imapd,mail,Dovecot,mail,Dovecot IMAP server
+dovecot-pop3d,mail,Dovecot,mail,Dovecot POP3 server
+amavisd-new,mail,Amavis,mail,Amavis mail content filter
+spamassassin,mail,Apache,mail,SpamAssassin mail filter
+opendkim,mail,OpenDKIM,mail,OpenDKIM DKIM signing
+bind9,network,ISC,dns,BIND9 DNS server
+bind,network,ISC,dns,BIND DNS server (RHEL)
+unbound,network,NLnet Labs,dns,Unbound DNS resolver
+dnsmasq,network,Dnsmasq,dns,Dnsmasq DNS/DHCP
+isc-dhcp-server,network,ISC,dhcp,ISC DHCP server
+dhcp-server,network,ISC,dhcp,ISC DHCP server (RHEL)
+kea,network,ISC,dhcp,Kea DHCP server
+squid,network,Squid,proxy,Squid proxy
+tinyproxy,network,Tinyproxy,proxy,Tinyproxy HTTP proxy
+openvpn,network,OpenVPN,vpn,OpenVPN
+wireguard-tools,network,WireGuard,vpn,WireGuard VPN tools
+wireguard-dkms,network,WireGuard,vpn,WireGuard kernel module
+strongswan,network,strongSwan,vpn,strongSwan IPsec VPN
+net-snmp,network,Net-SNMP,monitoring,Net-SNMP agent and tools
+snmpd,network,Net-SNMP,monitoring,SNMP daemon
+keepalived,network,Keepalived,load_balancer,Keepalived VRRP/LVS
+samba,file_server,Samba,file_server,Samba SMB server
+samba-common,file_server,Samba,file_server,Samba common files
+nfs-kernel-server,file_server,Linux,file_server,NFS server
+nfs-utils,file_server,Linux,file_server,NFS utilities (RHEL)
+minio,file_server,MinIO,file_server,MinIO S3-compatible object storage
+rsync,file_server,rsync,file_server,rsync file synchronization
+slapd,directory,OpenLDAP,directory,OpenLDAP server
+ldap-utils,directory,OpenLDAP,directory,OpenLDAP utilities
+sssd,directory,SSSD,directory,SSSD authentication
+freeradius,directory,FreeRADIUS,directory,FreeRADIUS server
+krb5-kdc,directory,MIT,directory,Kerberos KDC
+krb5-admin-server,directory,MIT,directory,Kerberos admin server
+389-ds-base,directory,389 Directory,directory,389 Directory Server
+rabbitmq-server,messaging,RabbitMQ,messaging,RabbitMQ broker
+kafka,messaging,Apache,messaging,Apache Kafka
+mosquitto,messaging,Eclipse,messaging,Mosquitto MQTT broker
+nats-server,messaging,NATS,messaging,NATS messaging server
+filebeat,logging,Elastic,logging,Filebeat log shipper
+logstash,logging,Elastic,logging,Logstash pipeline
+fluentd,logging,Fluentd,logging,Fluentd collector
+fluent-bit,logging,Fluent Bit,logging,Fluent Bit processor
+splunkforwarder,logging,Splunk,logging,Splunk Universal Forwarder
+splunk,logging,Splunk,logging,Splunk Enterprise
+vector,logging,Datadog,logging,Vector log/metrics pipeline
+promtail,logging,Grafana,logging,Promtail log shipper
+prometheus,monitoring,Prometheus,monitoring,Prometheus metrics
+grafana,monitoring,Grafana,monitoring,Grafana dashboard
+zabbix-agent,monitoring,Zabbix,monitoring,Zabbix agent
+zabbix-agent2,monitoring,Zabbix,monitoring,Zabbix agent 2
+zabbix-server,monitoring,Zabbix,monitoring,Zabbix server
+telegraf,monitoring,InfluxData,monitoring,Telegraf metrics collector
+nagios,monitoring,Nagios,monitoring,Nagios monitoring
+nagios-nrpe-server,monitoring,Nagios,monitoring,Nagios NRPE server
+icinga2,monitoring,Icinga,monitoring,Icinga 2 monitoring
+netdata,monitoring,Netdata,monitoring,Netdata real-time monitoring
+datadog-agent,monitoring,Datadog,monitoring,Datadog monitoring agent
+newrelic-infra,monitoring,New Relic,monitoring,New Relic infrastructure agent
+jenkins,ci_cd,Jenkins,ci_cd,Jenkins automation
+gitlab-runner,ci_cd,GitLab,ci_cd,GitLab CI runner
+gitlab-ce,ci_cd,GitLab,ci_cd,GitLab Community Edition
+gitlab-ee,ci_cd,GitLab,ci_cd,GitLab Enterprise Edition
+gitea,ci_cd,Gitea,ci_cd,Gitea self-hosted Git
+ansible,automation,Red Hat,automation,Ansible automation
+ansible-core,automation,Red Hat,automation,Ansible core
+puppet-agent,automation,Puppet,automation,Puppet agent
+puppetserver,automation,Puppet,automation,Puppet server
+chef-client,automation,Chef,automation,Chef client
+chef-server,automation,Chef,automation,Chef server
+salt-minion,automation,SaltStack,automation,Salt minion
+salt-master,automation,SaltStack,automation,Salt master
+terraform,automation,HashiCorp,automation,Terraform IaC
+consul,orchestration,HashiCorp,infrastructure,HashiCorp Consul
+nomad,orchestration,HashiCorp,infrastructure,HashiCorp Nomad
+tomcat9,application,Apache,application,Apache Tomcat 9
+tomcat10,application,Apache,application,Apache Tomcat 10
+tomcat,application,Apache,application,Apache Tomcat
+php-fpm,application,PHP,application,PHP FastCGI Process Manager
+php*-fpm,application,PHP,application,PHP FastCGI Process Manager (versioned)
+python3,runtime,Python,infrastructure,Python 3 runtime
+nodejs,runtime,Node.js,infrastructure,Node.js runtime
+openjdk,runtime,OpenJDK,infrastructure,OpenJDK Java runtime
+openjdk-*-jdk,runtime,OpenJDK,infrastructure,OpenJDK Java runtime (versioned)
+java-*-openjdk,runtime,OpenJDK,infrastructure,OpenJDK Java runtime (RHEL)
+default-jdk,runtime,OpenJDK,infrastructure,Default Java JDK
+golang,runtime,Go,infrastructure,Go runtime
+dotnet-sdk-*,runtime,Microsoft,infrastructure,.NET SDK
+dotnet-runtime-*,runtime,Microsoft,infrastructure,.NET runtime
+aspnetcore-runtime-*,runtime,Microsoft,infrastructure,ASP.NET Core runtime
+ruby,runtime,Ruby,infrastructure,Ruby runtime
+cups,print,CUPS,print,CUPS print server
+cups-server,print,CUPS,print,CUPS print server
+asterisk,telephony,Asterisk,telephony,Asterisk PBX
+freeswitch,telephony,FreeSWITCH,telephony,FreeSWITCH communications platform
+corosync,ha_cluster,Corosync,ha_cluster,Corosync cluster engine
+pacemaker,ha_cluster,ClusterLabs,ha_cluster,Pacemaker cluster resource manager
+bacula-director,backup,Bacula,backup,Bacula backup director
+bacula-client,backup,Bacula,backup,Bacula backup client
+bareos-director,backup,Bareos,backup,Bareos backup director
+bareos-filedaemon,backup,Bareos,backup,Bareos file daemon
+borgbackup,backup,Borg,backup,Borg deduplicating backup
+restic,backup,Restic,backup,Restic backup
+duplicity,backup,Duplicity,backup,Duplicity encrypted backup
+amanda-server,backup,Amanda,backup,Amanda backup server
+veeam,backup,Veeam,backup,Veeam backup agent
+qemu-kvm,virtualization,QEMU,virtualization,QEMU KVM hypervisor
+qemu-system-x86,virtualization,QEMU,virtualization,QEMU x86 emulator
+libvirt-daemon,virtualization,Red Hat,virtualization,libvirt daemon
+libvirt-daemon-system,virtualization,Red Hat,virtualization,libvirt daemon (Debian)
+virt-manager,virtualization,Red Hat,virtualization,Virtual Machine Manager
+open-vm-tools,virtualization,VMware,virtualization,VMware Tools (open source)
+virtualbox,virtualization,Oracle,virtualization,VirtualBox hypervisor
+cockpit,management,Red Hat,infrastructure,Cockpit web admin console
+webmin,management,Webmin,infrastructure,Webmin web admin panel
+glusterfs-server,storage,GlusterFS,storage,GlusterFS distributed filesystem
+ceph,storage,Ceph,storage,Ceph distributed storage
+ceph-common,storage,Ceph,storage,Ceph common utilities
+kong,web_server,Kong,api_gateway,Kong API gateway
+apisix,web_server,Apache,api_gateway,Apache APISIX API gateway
+tyk-gateway,web_server,Tyk,api_gateway,Tyk API gateway
+pgbouncer,database,PgBouncer,database,PgBouncer connection pooler
+pgpool2,database,Pgpool,database,Pgpool-II PostgreSQL middleware
+proxysql,database,ProxySQL,database,ProxySQL MySQL proxy
+maxscale,database,MariaDB,database,MariaDB MaxScale proxy
+patroni,database,Patroni,database,Patroni PostgreSQL HA
+tidb,database,PingCAP,database,TiDB distributed SQL
+yugabyte,database,Yugabyte,database,YugabyteDB distributed SQL
+timescaledb,database,Timescale,database,TimescaleDB time series
+questdb,database,QuestDB,database,QuestDB time series
+couchbase-server,database,Couchbase,database,Couchbase NoSQL database
+cockroachdb,database,Cockroach Labs,database,CockroachDB distributed SQL
+mssql-tools,database,Microsoft,database,SQL Server CLI tools
+msodbcsql*,database,Microsoft,database,Microsoft ODBC Driver for SQL Server
+oracle-database-*,database,Oracle,database,Oracle Database (versioned)
+oracle-xe-*,database,Oracle,database,Oracle Express Edition (versioned)
+meilisearch,search,Meilisearch,search,Meilisearch search engine
+manticoresearch,search,Manticore,search,Manticore Search engine
+argocd,container,Argo,kubernetes,ArgoCD GitOps controller
+istio,container,Istio,kubernetes,Istio service mesh
+linkerd,container,Linkerd,kubernetes,Linkerd service mesh
+harbor,container,Harbor,container,Harbor container registry
+cri-o,container,CNCF,container,CRI-O container runtime
+nerdctl,container,CNCF,container,nerdctl Docker-compatible CLI
+coredns,network,CoreDNS,dns,CoreDNS DNS server
+powerdns,network,PowerDNS,dns,PowerDNS authoritative DNS
+pdns-recursor,network,PowerDNS,dns,PowerDNS Recursor
+knot,network,Knot,dns,Knot DNS server
+tailscale,network,Tailscale,vpn,Tailscale mesh VPN
+zerotier-one,network,ZeroTier,vpn,ZeroTier virtual network
+nebula,network,Nebula,vpn,Nebula overlay network
+pritunl,network,Pritunl,vpn,Pritunl enterprise VPN
+zeek,security,Zeek,security,Zeek network security monitor
+ntopng,monitoring,ntopng,monitoring,ntopng network traffic monitor
+cacti,monitoring,Cacti,monitoring,Cacti network monitoring
+graylog-server,logging,Graylog,logging,Graylog log management
+graylog-sidecar,logging,Graylog,logging,Graylog Sidecar
+jaeger,monitoring,Jaeger,monitoring,Jaeger distributed tracing
+thanos,monitoring,Thanos,monitoring,Thanos Prometheus HA
+grafana-agent,monitoring,Grafana,monitoring,Grafana Agent
+otel-collector,monitoring,OpenTelemetry,monitoring,OpenTelemetry Collector
+apache-airflow,data_pipeline,Apache,data_pipeline,Apache Airflow workflow
+nifi,data_pipeline,Apache,data_pipeline,Apache NiFi data integration
+spark,data_pipeline,Apache,data_pipeline,Apache Spark data processing
+flink,data_pipeline,Apache,data_pipeline,Apache Flink stream processing
+keycloak,directory,Red Hat,directory,Keycloak identity management
+freeipa-server,directory,Red Hat,directory,FreeIPA identity management
+freeipa-client,directory,Red Hat,directory,FreeIPA client
+nexus,ci_cd,Sonatype,ci_cd,Nexus artifact repository
+artifactory,ci_cd,JFrog,ci_cd,JFrog Artifactory repository
+sonarqube,ci_cd,SonarSource,ci_cd,SonarQube code quality
+awx,automation,AWX,automation,AWX Ansible automation
+rundeck,automation,Rundeck,automation,Rundeck runbook automation
+packer,automation,HashiCorp,automation,Packer image builder
+vagrant,automation,HashiCorp,automation,Vagrant VM management
+mattermost,collaboration,Mattermost,collaboration,Mattermost team messaging
+nextcloud,collaboration,Nextcloud,collaboration,Nextcloud file sharing
+zookeeper,container,Apache,infrastructure,Apache ZooKeeper
+node-red,iot,Node-RED,iot,Node-RED flow-based programming
+asterisk,telephony,Asterisk,telephony,Asterisk PBX
+freeswitch,telephony,FreeSWITCH,telephony,FreeSWITCH communications
+cups-server,print,CUPS,print,CUPS print server (alt)
+drbd-utils,storage,DRBD,storage,DRBD distributed replicated block device
+open-iscsi,storage,Linux,storage,iSCSI initiator
+targetcli-fb,storage,Linux,storage,iSCSI target management
+multipath-tools,storage,Linux,storage,Device mapper multipath
+lvm2,storage,Linux,storage,LVM2 logical volume manager
+Microsoft SQL Server *(64-bit)*,database,Microsoft Corporation,database_server,Microsoft SQL Server engine (64-bit any version)
+Microsoft SQL Server *(32-bit)*,database,Microsoft Corporation,database_server,Microsoft SQL Server engine (32-bit legacy)
+Microsoft SQL Server Management Studio*,database_tools,Microsoft Corporation,windows_management,SQL Server Management Studio (admin tool)
+SQL Server *Common Files*,database,Microsoft Corporation,database_server,SQL Server shared common files
+Microsoft SQL Server *Express*,database,Microsoft Corporation,database_server,Microsoft SQL Server Express edition
+Microsoft Exchange Server*,messaging,Microsoft Corporation,mail_server,Microsoft Exchange Server (any version)
+Active Directory Domain Services*,directory_services,Microsoft Corporation,domain_controller,AD DS role package
+Active Directory Federation Services*,identity_federation,Microsoft Corporation,identity_server,AD FS role package
+Active Directory Certificate Services*,certificate_authority,Microsoft Corporation,certificate_server,AD CS / Certificate Authority role
+Active Directory Lightweight Directory Services*,directory_services,Microsoft Corporation,identity_server,AD LDS role package
+Internet Information Services*,web_server,Microsoft Corporation,web_server,IIS web server role
+IIS *Express*,development_tools,Microsoft Corporation,windows_host,IIS Express developer tooling (NOT a server signal)
+Hyper-V*,virtualization,Microsoft Corporation,virtualization_host,Microsoft Hyper-V hypervisor
+Configuration Manager Client*,management,Microsoft Corporation,windows_host,SCCM/MECM client agent
+System Center Configuration Manager*,management,Microsoft Corporation,management_server,SCCM/MECM site server
+Microsoft Endpoint Configuration Manager*,management,Microsoft Corporation,management_server,MECM (rebranded SCCM) site server
+Windows Server Update Services*,management,Microsoft Corporation,management_server,WSUS server role
+Windows Deployment Services*,deployment,Microsoft Corporation,management_server,WDS role
+Microsoft .NET Framework*,runtime,Microsoft Corporation,windows_host,.NET Framework runtime (any 4.x version)
+Microsoft .NET*,runtime,Microsoft Corporation,windows_host,.NET runtime (5.x / 6.x / 7.x / 8.x)
+Visual C++ *Redistributable*,runtime,Microsoft Corporation,windows_host,Microsoft Visual C++ Redistributable
+Microsoft Edge,browser,Microsoft Corporation,windows_host,Microsoft Edge browser (workstation indicator)
+Microsoft Edge Update,browser_updater,Microsoft Corporation,windows_host,Microsoft Edge update service
+Microsoft Office *,productivity,Microsoft Corporation,windows_host,Microsoft Office suite (workstation indicator)
+Microsoft Teams,collaboration,Microsoft Corporation,windows_host,Microsoft Teams desktop client
+Microsoft OneDrive,storage,Microsoft Corporation,windows_host,Microsoft OneDrive sync client
+Windows Server *,operating_system,Microsoft Corporation,windows_host,Windows Server OS package indicator
+Windows 10*,operating_system,Microsoft Corporation,windows_host,Windows 10 workstation indicator
+Windows 11*,operating_system,Microsoft Corporation,windows_host,Windows 11 workstation indicator
+Windows Admin Center*,management,Microsoft Corporation,windows_management,Windows Admin Center management UI
+PowerShell *,management,Microsoft Corporation,windows_management,PowerShell standalone install (Core/7+)
+Microsoft Monitoring Agent,monitoring,Microsoft Corporation,monitoring_agent,Microsoft Monitoring Agent (Azure / SCOM)
+System Center Operations Manager*,monitoring,Microsoft Corporation,monitoring_server,SCOM management server
+Sysmon*,security,Microsoft Corporation,security_endpoint,Microsoft Sysinternals Sysmon

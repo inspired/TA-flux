@@ -7,8 +7,11 @@ over time as you confirm or override predictions.
 
 ## What it does
 
-1. Builds a binary `port_*` feature matrix per destination from the
-   `Network_Traffic` data model.
+1. Builds a binary feature matrix per destination combining two sources:
+   - `port_*` features from the `Network_Traffic` CIM data model (firewall traffic).
+   - `svc_*` features from `index=odin_discovery sourcetype=odin:enumeration type=service`,
+     for services where the latest event in the window had `service_status=running`
+     or `service_enabled=enabled`.
 2. Trains a LogisticRegression model (MLTK) once per week from confirmed labels.
 3. Predicts asset roles for unconfirmed hosts every night, writes them to a
    review queue.
@@ -19,7 +22,11 @@ over time as you confirm or override predictions.
 
 - Splunk Enterprise 9.0+ or Splunk Cloud.
 - Splunk Machine Learning Toolkit (MLTK) 5.4+ installed.
+- Splunk Enterprise Security (for `normalizeip`) — service/firewall hostnames
+  and IPv6 addresses are normalized through it.
 - The `Network_Traffic` CIM data model populated and accelerated.
+- An `odin_discovery` index containing `odin:enumeration` events
+  (optional — without it, the model trains and predicts on ports only).
 - `admin` or `power` role to install and to modify confirmations.
 
 ## Install
@@ -124,7 +131,6 @@ To retrain:
 | `predicted_role` | string | |
 | `predicted_probability` | number | 0–1 |
 | `top3_roles` | string | pipe-separated `role:prob` for all classes |
-| `observed_ports` | string | comma-separated list |
 | `predicted_at` | epoch number | |
 
 ## Useful introspection searches

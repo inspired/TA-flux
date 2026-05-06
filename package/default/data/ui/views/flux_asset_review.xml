@@ -81,7 +81,7 @@
             | where predicted_probability >= coalesce(tonumber("$tok_min_conf$"), 0)
             | search predicted_role="$tok_role$" dest="*$tok_search$*"
             | sort - predicted_probability
-            | table dest predicted_role predicted_probability top3_roles observed_ports predicted_at
+            | table dest predicted_role predicted_probability top3_roles predicted_at
             | eval predicted_at = strftime(predicted_at, "%Y-%m-%d %H:%M")
           </query>
           <refresh>30s</refresh>
@@ -93,7 +93,6 @@
           <set token="tok_selected_role">$row.predicted_role$</set>
           <set token="tok_selected_prob">$row.predicted_probability$</set>
           <set token="tok_selected_top3">$row.top3_roles$</set>
-          <set token="tok_selected_ports">$row.observed_ports$</set>
           <eval token="tok_selected_dest_safe">replace($row.dest$, "[^a-zA-Z0-9.:_\-]", "")</eval>
         </drilldown>
       </table>
@@ -112,10 +111,6 @@
         <p>
           <strong>Class probabilities (all):</strong>
           <code>$tok_selected_top3$</code>
-        </p>
-        <p>
-          <strong>Observed ports:</strong>
-          <code>$tok_selected_ports$</code>
         </p>
       </html>
     </panel>
