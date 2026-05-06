@@ -1,7 +1,7 @@
 # TA-flux
 
 Splunk Cloud-vetted add-on that classifies asset roles from firewall traffic
-port patterns using MLTK RandomForestClassifier.
+port patterns using MLTK LogisticRegression.
 
 User-facing documentation: [package/README.md](package/README.md)
 
